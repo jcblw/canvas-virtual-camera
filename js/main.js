@@ -1,3 +1,3 @@
-import { monkeyPatchMediaDevices } from './media-devices.js';
+import { monkeyPatchMediaDevices } from "./media-devices.js";
 
 monkeyPatchMediaDevices();
