@@ -31,7 +31,7 @@ export const pixelate = (context, width, height) => {
   pixels.forEach(([x, y, rgb]) => {
     context.beginPath()
     context.fillStyle = `rgb(${rgb.join(',')})`
-    context.arc(x, y, halfPixel - halfPixel / 3, 0, 2 * Math.PI)
+    context.arc(x, y, halfPixel - halfPixel / 10, 0, 2 * Math.PI)
     context.fill()
   })
 }
