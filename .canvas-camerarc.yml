@@ -1,0 +1,62 @@
+## Canvas camera RC
+##
+## This is a YAML file that gets transformed into a manifest file
+## most keys are transformed into snake case upon creation
+##
+## Referances:
+## https://developer.chrome.com/extensions/manifest
+##
+## Mujo has some defaults that are set in
+## scripts/create-manifest.js
+
+name: Canvas camera
+description: A virtual camera you can draw on.
+contentScripts:
+  - matches:
+      - https://meet.google.com/*
+    js:
+      - inject.js
+    run_at: document_start
+permissions:
+  - tabs
+  - background
+  - activeTab
+  - webNavigation
+  - https://*/
+## TODO: Maybe infer this base on icons directory
+icons:
+  16: icon-16.png
+  48: icon-48.png
+  64: icon-64.png
+  128: icon-128.png
+  512: icon.png
+browserAction:
+  defaultIcon: icon.png
+webAccessibleResources:
+  - images/*.png
+  - images/*.svg
+  - template/*...
+  - '*.js.map'
+  - '*'
+contentSecurityPolicy:
+  scriptSrc:
+    - "'self'"
+    - https://storage.googleapis.com
+    - http://localhost:5000
+    - http://localhost:8097
+    - "'sha256-Hh68uPWQF960rB8rb9c+clat9HNoP1DpxpruDkr5esY='"
+  fontSrc:
+    - https://fonts.gstatic.com
+  objectSrc:
+    - "'self'"
+  imgSrc:
+    - "'self'"
+    - https://www.google-analytics.com
+    - chrome://favicon
+    - https://getmujo.com
+  connectSrc:
+    - https://getmujo.com
+    - http://localhost:3000
+    - https://sentry.io
+    - https://www.google-analytics.com
+    - ws://localhost:8097
